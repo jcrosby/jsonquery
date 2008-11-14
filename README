@@ -1,1 +1,18 @@
-JSONQuery provides a comprehensive set of data querying tools including filtering, recursive search, sorting, mapping, range selection, and flexible expressions with wildcard string comparisons and various operators.
+JSONQuery provides a comprehensive set of data querying tools including 
+filtering, recursive search, sorting, mapping, range selection, and flexible 
+expressions with wildcard string comparisons and various operators.
+
+Quick Examples:
+		var data = {customers:[
+			{name:"Susan", purchases:29},
+			{name:"Kim", purchases:150}, 
+			{name:"Jake", purchases:27}
+		]};
+		
+		var results = json.JSONQuery("$.customers[?purchases > 21 & name='Jake'][\\purchases]",data);
+		results 
+		
+		returns customers sorted by higest number of purchases to lowest.
+		
+For more advanced querying capabilities, see:
+http://www.sitepen.com/blog/2008/09/23/effortless-offline-with-offlinerest/
