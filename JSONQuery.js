@@ -58,8 +58,6 @@ You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2
 		returns customers sorted by higest number of purchases to lowest.
 
 */
- 
- 
 (function(){
     function map(arr, fun /*, thisp*/){
         var len = arr.length;
