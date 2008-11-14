@@ -55,9 +55,7 @@ You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2
 		var results = json.JSONQuery("$.customers[?purchases > 21 & name='Jake'][\\purchases]",data);
 		results 
 		
-		
-		
-		=> returns customers sorted by higest number of purchases to lowest.
+		returns customers sorted by higest number of purchases to lowest.
 
 */
  
@@ -353,6 +351,11 @@ You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2
     return obj ? executor.apply(this,arguments) : executor;
   };
   
-//  window["JSONQuery"] = JSONQuery;
-	namespace("json::JSONQuery", JSONQuery);
+  
+  if(typeof namespace == "function"){
+  	namespace("json::JSONQuery", JSONQuery);
+  }
+  else {
+  	window["JSONQuery"] = JSONQuery;
+  }
 })();
