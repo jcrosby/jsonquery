@@ -9,7 +9,7 @@ Quick Examples:
 			{name:"Jake", purchases:27}
 		]};
 		
-		var results = json.JSONQuery("$.customers[?purchases > 21 & name='Jake'][\\purchases]",data);
+		var results = JSONQuery("$.customers[?purchases > 21 & name='Jake'][\\purchases]",data);
 		results 
 		
 		returns customers sorted by higest number of purchases to lowest.
