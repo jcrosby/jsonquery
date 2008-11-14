@@ -1,17 +1,48 @@
 /*
-	Copyright (c) 2004-2008, The Dojo Foundation All Rights Reserved.
-	Available via Academic Free License >= 2.1 OR the modified BSD license.
-	see: http://dojotoolkit.org/license for details
-*/
+ Copyright Jason E. Smith 2008 Licensed under the Apache License, Version 2.0 (the "License"); 
+ You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+ */
 
-/* JSONQuery is a new module intended to succeed and improve upon 
- * the JSONPath api (http://goessner.net/articles/JsonPath/).
+
+/* 
+ * CREDITS:
+ * Thanks to Kris Zyp from SitePen for contributing his source for
+ * a standalone port of JSONQuery (from the dojox.json.query module).
  * 
- * JSONQuery offers rich powerful querying capabilities similar to those of XQuery. Big
- * thanks to Kris Zyp from SitePen.com for releasing the code for a standalone port.
+ * OVERVIEW:
+ * JSONQuery.js is a standalone port of the dojox.json.query module. It is intended as
+ * a dropin solution with zero dependencies. JSONQuery is intended to succeed and improve upon 
+ * the JSONPath api (http://goessner.net/articles/JsonPath/) which offers rich powerful 
+ * querying capabilities similar to those of XQuery.
  * 
- * Overview:
- * http://www.sitepen.com/blog/2008/07/16/jsonquery-data-querying-beyond-jsonpath/
+ * EXAMPLES / USAGE:
+ * see http://www.sitepen.com/blog/2008/07/16/jsonquery-data-querying-beyond-jsonpath/
+ * 
+ * 		*Ripped from original source.
+ * 				JSONQuery(queryString,object) 
+				and
+				JSONQuery(queryString)(object)
+				always return identical results. The first one immediately evaluates, the second one returns a
+				function that then evaluates the object.
+			  
+			example:
+				JSONQuery("foo",{foo:"bar"}) 
+				This will return "bar".
+		
+			example:
+				evaluator = JSONQuery("?foo='bar'&rating>3");
+				This creates a function that finds all the objects in an array with a property
+				foo that is equals to "bar" and with a rating property with a value greater
+				than 3.
+				evaluator([{foo:"bar",rating:4},{foo:"baz",rating:2}])
+				This returns:
+				{foo:"bar",rating:4}
+			
+			example:
+				evaluator = JSONQuery("$[?price<15.00][\rating][0:10]");
+				This finds objects in array with a price less than 15.00 and sorts then
+				by rating, highest rated first, and returns the first ten items in from this
+				filtered and sorted list.
  */
 
 (function(){
