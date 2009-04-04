@@ -1,7 +1,8 @@
 var tests = function($) {
 
   var collection = [
-    {foo:'bar'}
+    {id:1, foo:'bar', rating:3},
+    {id:2, foo:'baz', rating:2}
   ];
 
   jqUnit.test('?name=value', function() {
