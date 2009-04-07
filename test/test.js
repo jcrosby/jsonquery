@@ -177,4 +177,96 @@ var tests = function($) {
     jqUnit.equals(3, result[1].id, "should return the next element factoring in the step offset");
   });
 
+  jqUnit.test('[expr,expr]', function() {
+    
+  });
+
+  jqUnit.test('[expr][expr]...', function() {
+    
+  });
+
+  jqUnit.test('+', function() {
+    
+  });
+
+  jqUnit.test('-', function() {
+    
+  });
+
+  jqUnit.test('/', function() {
+    
+  });
+
+  jqUnit.test('*', function() {
+    
+  });
+
+  jqUnit.test('&', function() {
+    
+  });
+
+  jqUnit.test('|', function() {
+    
+  });
+
+  jqUnit.test('%', function() {
+    
+  });
+
+  jqUnit.test('( and )', function() {
+    
+  });
+
+  jqUnit.test('accessing the current object with @', function() {
+    
+  });
+
+  jqUnit.test('accessing the root object wth $', function() {
+    
+  });
+
+  jqUnit.test('[*]', function() {
+    
+  });
+
+  jqUnit.test('.*', function() {
+    
+  });
+
+  jqUnit.test('..property', function() {
+    
+  });
+
+  jqUnit.test('[={new object literal}]', function() {
+    
+  });
+
+  jqUnit.test('expr ~ expr', function() {
+    
+  });
+
+  jqUnit.test('partial string matching with *', function() {
+    
+  });
+
+  jqUnit.test('$1 $2 etc.', function() {
+    
+  });
+
+  jqUnit.test('[/expr]', function() {
+    
+  });
+
+  jqUnit.test('[\\expr]', function() {
+    
+  });
+
+  jqUnit.test('[/expr, /expr]', function() {
+    
+  });
+
+  jqUnit.test('[/expr, \\expr]', function() {
+    
+  });
+
 }(jQuery);
