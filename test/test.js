@@ -182,7 +182,9 @@ var tests = function($) {
   });
 
   jqUnit.test('[expr][expr]...', function() {
-    
+    var result = JSONQuery('[?id>0][?rating>2]', collection);
+    jqUnit.equals(1, result.length, "should return the correct number of results");
+    jqUnit.equals(1, result[0].id, "should return the correct result");
   });
 
   jqUnit.test('+', function() {
