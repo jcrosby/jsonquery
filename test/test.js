@@ -255,20 +255,42 @@ var tests = function($) {
     
   });
 
+  var sortables = [
+    {first:'john',last:'doe'},
+    {first:'joe',last:'pass'},
+    {first:'alice',last:'doe'}
+  ];
+
   jqUnit.test('[/expr]', function() {
-    
+    var result = JSONQuery('[/last]', sortables);
+    jqUnit.equals(3, result.length, "should return the correct number of results");
+    jqUnit.equals('doe', result[0].last, "should return a correctly ordered result");
+    jqUnit.equals('doe', result[1].last, "should return a correctly ordered result");
+    jqUnit.equals('pass', result[2].last, "should return a correctly ordered result");
   });
 
   jqUnit.test('[\\expr]', function() {
-    
+    var result = JSONQuery('[\\last]', sortables);
+    jqUnit.equals(3, result.length, "should return the correct number of results");
+    jqUnit.equals('pass', result[0].last, "should return a correctly ordered result");
+    jqUnit.equals('doe', result[1].last, "should return a correctly ordered result");
+    jqUnit.equals('doe', result[2].last, "should return a correctly ordered result");
   });
 
   jqUnit.test('[/expr, /expr]', function() {
-    
+    var result = JSONQuery('[/last, /first]', sortables);
+    jqUnit.equals(3, result.length, "should return the correct number of results");
+    jqUnit.ok(result[0].last == 'doe' && result[0].first == 'alice', "should return a correctly ordered result");
+    jqUnit.ok(result[1].last == 'doe' && result[1].first == 'john', "should return a correctly ordered result");
+    jqUnit.ok(result[2].last == 'pass' && result[2].first == 'joe', "should return a correctly ordered result");
   });
 
   jqUnit.test('[/expr, \\expr]', function() {
-    
+    var result = JSONQuery('[/last, \\first]', sortables);
+    jqUnit.equals(3, result.length, "should return the correct number of results");
+    jqUnit.ok(result[0].last == 'doe' && result[0].first == 'john', "should return a correctly ordered result");
+    jqUnit.ok(result[1].last == 'doe' && result[1].first == 'alice', "should return a correctly ordered result");
+    jqUnit.ok(result[2].last == 'pass' && result[2].first == 'joe', "should return a correctly ordered result");
   });
 
 }(jQuery);
