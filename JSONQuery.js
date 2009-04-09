@@ -45,17 +45,17 @@ You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2
         filtered and sorted list.
         
         
-	example:      
-		var data = {customers:[
-			{name:"Susan", purchases:29},
-			{name:"Kim", purchases:150}, 
-			{name:"Jake", purchases:27}
-		]};
-		
-		var results = json.JSONQuery("$.customers[?purchases > 21 & name='Jake'][\\purchases]",data);
-		results 
-		
-		returns customers sorted by higest number of purchases to lowest.
+  example:      
+    var data = {customers:[
+      {name:"Susan", purchases:29},
+      {name:"Kim", purchases:150}, 
+      {name:"Jake", purchases:27}
+    ]};
+    
+    var results = json.JSONQuery("$.customers[?purchases > 21 & name='Jake'][\\purchases]",data);
+    results 
+    
+    returns customers sorted by higest number of purchases to lowest.
 
 */
 
@@ -353,9 +353,9 @@ You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2
   
   
   if(typeof namespace == "function"){
-  	namespace("json::JSONQuery", JSONQuery);
+    namespace("json::JSONQuery", JSONQuery);
   }
   else {
-  	window["JSONQuery"] = JSONQuery;
+    window["JSONQuery"] = JSONQuery;
   }
 })();
