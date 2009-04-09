@@ -212,7 +212,11 @@ var tests = function($) {
   });
 
   jqUnit.test('*', function() {
-    
+    var result = JSONQuery('[=id*2]', collection);
+    jqUnit.equals(result.length, 2, "should return the correct number of results");
+    for(var i=0; i<collection.length; i++) {
+      jqUnit.equals(result[i], (i+1)*2, "should return the correct result");
+    }
   });
 
   jqUnit.test('&', function() {
@@ -252,7 +256,11 @@ var tests = function($) {
   });
 
   jqUnit.test('[={new object literal}]', function() {
-    
+    var result = JSONQuery('[={x:id}]', collection);
+    jqUnit.equals(result.length, 2, "should return the correct number of results");
+    for(var i=0; i<collection.length; i++) {
+      jqUnit.equals(result[i].x, i+1, "should return the correct result");
+    }
   });
 
   jqUnit.test('expr ~ expr', function() {
