@@ -5,7 +5,7 @@ var tests = function($) {
     {id:2, foo:'baz', rating:2}
   ];
 
-  jqUnit.test("?name='value'", function() {
+  jqUnit.test("?property='value'", function() {
     var result = JSONQuery("?foo='bar'", collection);
     jqUnit.equals(result.length, 1, "should return the correct number of results");
     jqUnit.equals(result[0].id, 1, "should return the correct object");
@@ -15,7 +15,7 @@ var tests = function($) {
     jqUnit.equals(result.length, 0, "should return an emtpy result if there are no property matches");
   });
 
-  jqUnit.test("?name=value using a number for comparison", function() {
+  jqUnit.test("?property=value using a number for comparison", function() {
     var result = JSONQuery("?rating=4", collection);
     jqUnit.equals(result.length, 1, "should return the correct number of results");
     result = JSONQuery("?rating=7", collection);
@@ -24,18 +24,18 @@ var tests = function($) {
     jqUnit.equals(result.length, 0, "should return an emtpy result if there are no property matches");
   });
 
-  jqUnit.test('?name>=value when value and target are equal', function() {
+  jqUnit.test('?property>=value when value and target are equal', function() {
     var result = JSONQuery("?rating>=4", collection);
     jqUnit.equals(result.length, 1, "should return the correct number of results");
     jqUnit.equals(result[0].id, 1, "should return the correct result");
   });
 
-  jqUnit.test('?name>=value when target is less than value', function() {
+  jqUnit.test('?property>=value when target is less than value', function() {
     var result = JSONQuery("?rating>=5", collection);
     jqUnit.equals(result.length, 0, "should return an empty result set");
   });
 
-  jqUnit.test('?name>=value when target is greater than value', function() {
+  jqUnit.test('?property>=value when target is greater than value', function() {
     var result = JSONQuery("?rating>=3", collection);
     jqUnit.equals(result.length, 1, "should return the correct number of results");
     jqUnit.equals(result[0].id, 1, "should return the correct result");
@@ -43,18 +43,18 @@ var tests = function($) {
     jqUnit.equals(result.length, 2, "should return the correct number of results for mulitple matches");
   });
 
-  jqUnit.test('?name<=value when value and target are equal', function() {
+  jqUnit.test('?property<=value when value and target are equal', function() {
     var result = JSONQuery("?rating<=2", collection);
     jqUnit.equals(result.length, 1, "should return the correct number of results");
     jqUnit.equals(result[0].id, 2, "should return the correct result");
   });
 
-  jqUnit.test('?name<=value when target is greater than value', function() {
+  jqUnit.test('?property<=value when target is greater than value', function() {
     var result = JSONQuery("?rating<=1", collection);
     jqUnit.equals(result.length, 0, "should return an empty result set");
   });
 
-  jqUnit.test('?name<=value when target is less than value', function() {
+  jqUnit.test('?property<=value when target is less than value', function() {
     var result = JSONQuery("?rating<=3", collection);
     jqUnit.equals(result.length, 1, "should return the correct number of results");
     jqUnit.equals(result[0].id, 2, "should return the correct result");
@@ -62,7 +62,7 @@ var tests = function($) {
     jqUnit.equals(result.length, 2, "should return the correct number of results for multiple matches");
   });
 
-  jqUnit.test('?name>value when target is greater than value', function() {
+  jqUnit.test('?property>value when target is greater than value', function() {
     var result = JSONQuery('?rating>3', collection);
     jqUnit.equals(result.length, 1, "should return the correct number of results");
     jqUnit.equals(result[0].id, 1, "should return the correct result");
@@ -70,27 +70,27 @@ var tests = function($) {
     jqUnit.equals(result.length, 2, "should return the correct number of results for multiple matches");
   });
 
-  jqUnit.test('?name>value when target is equal to value', function() {
+  jqUnit.test('?property>value when target is equal to value', function() {
     var result = JSONQuery('?rating>4', collection);
     jqUnit.equals(result.length, 0, "should return an empty result set");
   });
 
-  jqUnit.test('?name>value when target is less than value', function() {
+  jqUnit.test('?property>value when target is less than value', function() {
     var result = JSONQuery('?rating>5', collection);
     jqUnit.equals(result.length, 0, "should return an empty result set");
   });
 
-  jqUnit.test('?name < value when target is greater than value', function() {
+  jqUnit.test('?property < value when target is greater than value', function() {
     var result = JSONQuery('?rating<2', collection);
     jqUnit.equals(result.length, 0, "should return an empty result set");
   });
 
-  jqUnit.test('?name < value when target is equal to value', function() {
+  jqUnit.test('?property < value when target is equal to value', function() {
     var result = JSONQuery('?rating<2', collection);
     jqUnit.equals(result.length, 0, "should return an empty result set");
   });
 
-  jqUnit.test('?name < value when target is less than value', function() {
+  jqUnit.test('?property < value when target is less than value', function() {
     var result = JSONQuery('?rating<3', collection);
     jqUnit.equals(result.length, 1, "should return the correct number of results");
     jqUnit.equals(result[0].id, 2, "should return the correct result");
@@ -98,7 +98,7 @@ var tests = function($) {
     jqUnit.equals(result.length, 2, "should return the correct number of results for multiple matches");
   });
 
-  jqUnit.test("?name!='value' using a string for comparison", function() {
+  jqUnit.test("?property!='value' using a string for comparison", function() {
     var result = JSONQuery("?foo!='bar'", collection);
     jqUnit.equals(result.length, 1, "should return the correct number of results");
     jqUnit.equals(result[0].id, 2, "should return the correct result");
@@ -106,7 +106,7 @@ var tests = function($) {
     jqUnit.equals(result.length, 2, "should return the correct number of results for multiple matches");
   });
 
-  jqUnit.test('?name!=value', function() {
+  jqUnit.test('?property!=value', function() {
     var result = JSONQuery('?rating!=2', collection);
     jqUnit.equals(result.length, 1, "should return the correct number of results");
     jqUnit.equals(result[0].id, 1, "should return the correct result");
@@ -114,25 +114,7 @@ var tests = function($) {
     jqUnit.equals(result.length, 2, "should return the correct number of results for multiple matches");
   });
 
-  jqUnit.test('[/name]', function() {
-    var result = JSONQuery('[/rating]', collection);
-    jqUnit.equals(2, result.length, "should return the correct number of results");
-    jqUnit.equals(2, result[0].id, "should place the lowest value first in the list");
-    jqUnit.equals(1, result[1].id, "should place the highest value last in the list");
-    result = JSONQuery('[/doesnotexist]', collection);
-    jqUnit.equals(collection.length, result.length, "should ignore the sort when the property does not exist");
-  });
-
-  jqUnit.test('[\\name]', function() {
-    var result = JSONQuery('[\\rating]', collection);
-    jqUnit.equals(result.length, 2, "should return the correct number of results");
-    jqUnit.equals(result[0].id, 1, "should place the highest value first in the list");
-    jqUnit.equals(result[1].id, 2, "should place the lowest value last in the list");
-    result = JSONQuery('[\\doesnotexist]', collection);
-    jqUnit.equals(result.length, collection.length, "should ignore the sort when the property does not exist");
-  });
-
-  jqUnit.test('[=name]', function() {
+  jqUnit.test('value extraction with [=property]', function() {
     var result = JSONQuery('[=foo]', collection);
     jqUnit.equals(result.length, 2, "should return the correct number of results");
     jqUnit.equals(result[0], 'bar', "should extract the named values");
@@ -152,7 +134,7 @@ var tests = function($) {
     }
   });
 
-  jqUnit.test('[start:end]', function() {
+  jqUnit.test('array slicing with [start:end]', function() {
     var result = [];
     for(var i=1; i<collection.length; i++) {
       result = JSONQuery('[0:'+i+']', collection);
@@ -169,7 +151,7 @@ var tests = function($) {
     jqUnit.equals(result.length, 2, "should default to 0 for the offset");
   });
 
-  jqUnit.test('[start:end:step]', function() {
+  jqUnit.test('array slicing with [start:end:step]', function() {
     var objects = [{id:1},{id:2},{id:3},{id:4}];
     var result = JSONQuery('[0:3:2]', objects);
     jqUnit.equals(result.length, 2, "should return the correct number of elements");
@@ -177,11 +159,13 @@ var tests = function($) {
     jqUnit.equals(result[1].id, 3, "should return the next element factoring in the step offset");
   });
 
-  jqUnit.test('[expr,expr]', function() {
-    
+  jqUnit.test('unions with [expr,expr]', function() {
+    var result = JSONQuery("[?foo='bar',rating=4]", collection);
+    jqUnit.equals(result.length, 1, "should return the correct number of results");
+    jqUnit.equals(result[0].id, 1, "should return the correct result");
   });
 
-  jqUnit.test('[expr][expr]...', function() {
+  jqUnit.test('filter chaining with [expr][expr]...', function() {
     var result = JSONQuery('[?id>0][?rating>2]', collection);
     jqUnit.equals(result.length, 1, "should return the correct number of results");
     jqUnit.equals(result[0].id, 1, "should return the correct result");
@@ -219,43 +203,75 @@ var tests = function($) {
     }
   });
 
-  jqUnit.test('&', function() {
-    
+  jqUnit.test('bitwise AND with &', function() {
+    var result = JSONQuery('[=foo&3]', [{foo:10}]);
+    jqUnit.equals(result[0], 2, "should return the correct result");
   });
 
-  jqUnit.test('|', function() {
-    
+  jqUnit.test('bitwise OR with |', function() {
+    var result = JSONQuery('[=foo|3]', [{foo:10}]);
+    jqUnit.equals(result[0], 11, "should return the correct result");
   });
 
   jqUnit.test('%', function() {
-    
+    var result = JSONQuery('[=5%id]', collection);
+    jqUnit.equals(result.length, 2, "should return the correct number of results");
+    jqUnit.equals(result[1], 1, "should return the correct result");
   });
 
   jqUnit.test('( and )', function() {
-    
+    var result = JSONQuery('[=(id+1)*2]', collection);
+    jqUnit.equals(result.length, 2, "should return the correct number of results");
+    jqUnit.equals(result[0], 4, "should return the correct result");
+    jqUnit.equals(result[1], 6, "should return the correct result");
   });
 
   jqUnit.test('accessing the current object with @', function() {
-    
+    var result = JSONQuery("[?@.rating=4]", collection);
+    jqUnit.equals(result.length, 1, "should return the correct number of results");
+    jqUnit.equals(result[0].foo, 'bar', "should return the correct result");
   });
 
-  jqUnit.test('accessing the root object wth $', function() {
-    
+  jqUnit.test('accessing the root object with $', function() {
+    var result = JSONQuery("$[?rating=4]", collection);
+    jqUnit.equals(result.length, 1, "should return the correct number of results");
+    jqUnit.equals(result[0].foo, 'bar', "should return the correct result");
   });
 
-  jqUnit.test('[*]', function() {
-    
+  jqUnit.test('accessing all properties with [*]', function() {
+    var result = JSONQuery('[*]', collection);
+    jqUnit.equals(result.length, 2, "should return the correct number of results");
+    for(var i=0; i<collection.length; i++) {
+      jqUnit.equals(result[i].id, i+1, "should return the correct result");
+      jqUnit.ok(result[i].hasOwnProperty('foo'), "should include the foo property");
+      jqUnit.ok(result[i].hasOwnProperty('rating'), "should include the rating property");
+    }
   });
 
-  jqUnit.test('.*', function() {
-    
+  jqUnit.test('accessing all properties with .*', function() {
+    var result = JSONQuery('.*', collection);
+    jqUnit.equals(result.length, 2, "should return the correct number of results");
+    for(var i=0; i<collection.length; i++) {
+      jqUnit.equals(result[i].id, i+1, "should return the correct result");
+      jqUnit.ok(result[i].hasOwnProperty('foo'), "should include the foo property");
+      jqUnit.ok(result[i].hasOwnProperty('rating'), "should include the rating property");
+    }
   });
 
-  jqUnit.test('..property', function() {
-    
+  jqUnit.test('recursive find with ..property', function() {
+    var nested = [
+      {id:1,number:1},
+      {id:2,foo:3,inside:{number:2}},
+      {id:3,foo:4,inside:{bar:[{number:3}]}}
+    ];
+    var result = JSONQuery('..number', nested);
+    jqUnit.equals(result.length, 3, "should return the correct number of results");
+    for(var i=0; i<nested.length; i++) {
+      jqUnit.equals(result[i], i+1, "should find the nested property");
+    }
   });
 
-  jqUnit.test('[={new object literal}]', function() {
+  jqUnit.test('creating new object literals with [={new object literal}]', function() {
     var result = JSONQuery('[={x:id}]', collection);
     jqUnit.equals(result.length, 2, "should return the correct number of results");
     for(var i=0; i<collection.length; i++) {
@@ -263,16 +279,21 @@ var tests = function($) {
     }
   });
 
-  jqUnit.test('expr ~ expr', function() {
-    
+  jqUnit.test('case insensitive matching with [expr ~ expr]', function() {
+    var result = JSONQuery("[?foo~'BAR']", collection);
+    jqUnit.equals(result.length, 1, "should return the correct number of results");
+    jqUnit.equals(result[0].id, 1, "should return the correct result");
   });
 
   jqUnit.test('partial string matching with *', function() {
-    
+    var result = JSONQuery("?foo='ba*'", collection);
+    jqUnit.equals(result.length, 2, "should return the correct number of results");
   });
 
-  jqUnit.test('$1 $2 etc.', function() {
-    
+  jqUnit.test('value substitution with $1 $2 etc.', function() {
+    var result = JSONQuery("[?foo=$1,rating=$2]", collection, 'bar', 4);
+    jqUnit.equals(result.length, 1, "should return the correct number of results");
+    jqUnit.equals(result[0].id, 1, "should return the correct result");
   });
 
   var sortables = [
@@ -281,23 +302,27 @@ var tests = function($) {
     {first:'alice',last:'doe'}
   ];
 
-  jqUnit.test('[/expr]', function() {
+  jqUnit.test('ascending sort with [/expr]', function() {
     var result = JSONQuery('[/last]', sortables);
     jqUnit.equals(result.length, 3, "should return the correct number of results");
     jqUnit.equals(result[0].last, 'doe', "should return a correctly ordered result");
     jqUnit.equals(result[1].last, 'doe', "should return a correctly ordered result");
     jqUnit.equals(result[2].last, 'pass', "should return a correctly ordered result");
+    result = JSONQuery('[/doesnotexist]', collection);
+    jqUnit.equals(collection.length, result.length, "should ignore the sort when the property does not exist");
   });
 
-  jqUnit.test('[\\expr]', function() {
+  jqUnit.test('descending sort with [\\expr]', function() {
     var result = JSONQuery('[\\last]', sortables);
     jqUnit.equals(result.length, 3, "should return the correct number of results");
     jqUnit.equals(result[0].last, 'pass', "should return a correctly ordered result");
     jqUnit.equals(result[1].last, 'doe', "should return a correctly ordered result");
     jqUnit.equals(result[2].last, 'doe', "should return a correctly ordered result");
+    result = JSONQuery('[\\doesnotexist]', collection);
+    jqUnit.equals(result.length, collection.length, "should ignore the sort when the property does not exist");
   });
 
-  jqUnit.test('[/expr, /expr]', function() {
+  jqUnit.test('prioritized sorting with [/expr, /expr]', function() {
     var result = JSONQuery('[/last, /first]', sortables);
     jqUnit.equals(result.length, 3, "should return the correct number of results");
     jqUnit.ok(result[0].last == 'doe' && result[0].first == 'alice', "should return a correctly ordered result");
@@ -305,7 +330,7 @@ var tests = function($) {
     jqUnit.ok(result[2].last == 'pass' && result[2].first == 'joe', "should return a correctly ordered result");
   });
 
-  jqUnit.test('[/expr, \\expr]', function() {
+  jqUnit.test('mixed direction, prioritized sorting with [/expr, \\expr]', function() {
     var result = JSONQuery('[/last, \\first]', sortables);
     jqUnit.equals(result.length, 3, "should return the correct number of results");
     jqUnit.ok(result[0].last == 'doe' && result[0].first == 'john', "should return a correctly ordered result");
