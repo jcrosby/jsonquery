@@ -20,3 +20,8 @@ http://www.sitepen.com/blog/2008/07/16/jsonquery-data-querying-beyond-jsonpath/
 
 JSONQuery is a superset of JSONPath:
 http://goessner.net/articles/JsonPath/
+
+Testing
+-------
+
+To run the test suite, simply open test/test.html in your browser.
